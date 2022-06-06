@@ -14,8 +14,22 @@
 
 int main()
 {
-	const char str[50] = "Output is: ola %s q tal %d\n";
+	int		hex;
+	char	point;
+	int		print;
+	int		ft_print;
+	unsigned int	unsis;
+	const 	char str[80] = "Output is: ola %s q tal %d\nHex is: %X\nPorc is: %%\nUnsi is: %u\n";	
 
-	if (printf(str, "puta", 222) == ft_printf(str, "puta", 222))
+	unsis = 0;
+	point = 'p';
+	hex = 12;
+	print = printf(str, "puta", 0, hex, unsis);
+	ft_print = ft_printf(str, "puta", 0, hex, unsis);
+	if (print == ft_print)
 		printf("Return values are equal :)\n");
+	else
+		printf("Return values arent equal :(\n");
+	printf("Original returns: %d\n", print);
+	printf("Yours returns: %d\n", ft_print);
 }

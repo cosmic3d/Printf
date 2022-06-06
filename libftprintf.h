@@ -10,4 +10,8 @@
 int	ft_printf(char const *, ...);
 int	ft_print_str(char *str);
 int ft_print_int(int i);
+int	ft_print_hexlow(int dec);
+int	ft_print_hexupp(int dec);
+int	ft_print_ptr(int ptr);
+int ft_print_unsigned(unsigned int i);
 #endif

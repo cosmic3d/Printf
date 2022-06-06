@@ -10,8 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_print_ptr(void *ptr)
+#include "libftprintf.h"
+
+int	ft_print_ptr(int ptr)
 {
 	write(1, "0x", 2);
-	
+	return (ft_print_hexlow((int)ptr));
 }

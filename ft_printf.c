@@ -16,10 +16,18 @@ static int	get_type(char c, va_list lst)
 {
 	if (c == 's')
 		return (ft_print_str(va_arg(lst, char *)));
+	else if(c == '%')
+		return(ft_print_str("%"));
 	else if (c == 'i' || c == 'd')
 		return (ft_print_int(va_arg(lst, int)));
-//	else if (c == 'p')
-//		return (ft_print_ptr(va_arg(lst, void *)));
+	else if (c == 'x')
+		return (ft_print_hexlow(va_arg(lst, int)));
+	else if (c == 'X')
+		return (ft_print_hexupp(va_arg(lst, int)));
+	else if (c == 'p')
+		return (ft_print_ptr(va_arg(lst, int)));
+	else if (c == 'u')
+		return (ft_print_unsigned(va_arg(lst, unsigned long)));
 	return (0);
 }
 

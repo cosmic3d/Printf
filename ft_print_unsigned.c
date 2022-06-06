@@ -1,17 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_int.c                                     :+:      :+:    :+:   */
+/*   ft_print_unsigned.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jenavarr <jenavarr@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/01 16:55:45 by jenavarr          #+#    #+#             */
-/*   Updated: 2022/06/03 12:39:54 by jenavarr         ###   ########.fr       */
+/*   Created: 2022/06/06 20:11:16 by jenavarr          #+#    #+#             */
+/*   Updated: 2022/06/06 20:11:21 by jenavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-static int	check_length(int numb)
+#include <limits.h>
+
+static int	check_length(unsigned int numb)
 {
 	int	cypher;
 
@@ -29,7 +31,7 @@ static int	check_length(int numb)
 	return (cypher);
 }
 
-static void	get_num(int numi, int a)
+static void	get_num(unsigned int numi, int a)
 {
 	char	real_num;
 	int		b;
@@ -52,7 +54,7 @@ static void	get_num(int numi, int a)
 	}
 }
 
-static void	ft_putnbr(int nb)
+static void	ft_putnbr(unsigned int nb)
 {
 	int	a;
 	int	cyph;
@@ -64,9 +66,7 @@ static void	ft_putnbr(int nb)
 		nb = nb * -1;
 		write(1, "-", 1);
 	}
-	if (nb == -2147483648)
-		write(1, "2147483648", 10);
-	if (nb == 0 && nb != -2147483648)
+	if (nb == 0)
 		write(1, "0", 1);
 	else
 	{
@@ -78,8 +78,10 @@ static void	ft_putnbr(int nb)
 	}
 }
 
-int	ft_print_int(int i)
+int ft_print_unsigned(unsigned int i)
 {
-	ft_putnbr(i);
-	return (check_length(i));
+    if (i == 0)
+        return (write(1, "0", 1) + 1);
+    ft_putnbr(i);
+    return (check_length(i) + 1);
 }
