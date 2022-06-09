@@ -12,8 +12,10 @@
 
 #include "libftprintf.h"
 
-int	ft_print_ptr(int ptr)
+int	ft_print_ptr(void *ptr)
 {
 	write(1, "0x", 2);
-	return (ft_print_hexlow((int)ptr));
+	if (!ptr)
+		return (write(1, "0", 1) + 2);
+	return (ft_print_hexlow(((unsigned long)ptr)) + 2);
 }

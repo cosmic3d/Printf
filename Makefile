@@ -2,7 +2,7 @@ NAME	= libftprintf.a
 
 CFLAGS	= -Wall -Wextra -Werror
 
-SRCS = ft_printf.c
+SRCS = ft_strlen.c ft_strdup.c ft_itoa.c ft_print_char.c ft_print_str.c ft_printf.c ft_print_int.c ft_print_hexlow.c ft_print_hexupp.c ft_print_ptr.c ft_print_unsigned.c
 
 OBJ		= $(SRCS:.c=.o)
 
@@ -15,9 +15,6 @@ all: $(NAME)
 
 $(NAME): $(OBJ) libftprintf.h
 	ar -crs $(NAME) $(OBJ)
-bonus: $(OBJ2)
-	ar -crs $(NAME)
-	touch $@
 clean:
 	rm -f $(OBJ)
 

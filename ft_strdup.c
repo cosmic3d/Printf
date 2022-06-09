@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_hexlow.c                                  :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jenavarr <jenavarr@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/06 18:01:47 by jenavarr          #+#    #+#             */
-/*   Updated: 2022/06/06 18:02:58 by jenavarr         ###   ########.fr       */
+/*   Created: 2022/05/15 15:29:28 by jenavarr          #+#    #+#             */
+/*   Updated: 2022/05/15 16:25:28 by jenavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include <stdlib.h>
+#include "libft.h"
+#include <errno.h>
 
-int	ft_print_hexlow(unsigned long dec)
+char	*ft_strdup(const char *s1)
 {
-	int	len;
+	char	*copy;
+	int		i;
 
-	len = 0;
-	if (dec >= 16)
+	i = ft_strlen(s1);
+	copy = malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	if (copy == 0)
 	{
-		len += ft_print_hexlow(dec / 16);
-		len += ft_print_hexlow(dec % 16);
+		errno = ENOMEM;
+		return (NULL);
 	}
-	else
+	while (i >= 0)
 	{
-		len += write(1, &"0123456789abcdef"[dec], 1);
+		copy[i] = s1[i];
+		i--;
 	}
-	return (len);
+	return (copy);
 }
